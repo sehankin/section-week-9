@@ -42,5 +42,6 @@
 # More things to think about
 
 1. How will you implement caching?
+1. How will you refresh a token that has expired?
 1. What will change in the code if you were to use it for other oAuth2 provider?
 1. What will change in the code if you were to use an oAuth1 provider?
