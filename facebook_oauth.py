@@ -7,14 +7,17 @@ import webbrowser
 import json
 from datetime import datetime
 
-# for Facebook oAuth
-APP_ID = ''
-APP_SECRET = ''
-AUTHORIZATION_BASE_URL = ''
-TOKEN_URL = ''
-REDIRECT_URI = ''
+from secret_data import app_id, app_secret
+
+# for Facebook oAuth (app name: 'hankin-507-section09')
+APP_ID = app_id
+APP_SECRET = app_secret
+AUTHORIZATION_BASE_URL = 'https://www.facebook.com/v2.10/dialog/oauth'
+TOKEN_URL = 'https://graph.facebook.com/v2.10/oauth/access_token'
+REDIRECT_URI = 'https://www.programsinformationpeople.org/runestone/oauth'
 # REFRESH_URL = ''
-scope = []
+scope = ['read_custom_friendlists', 'email', 'user_friends', 'user_birthday']
+    # what we call "scope," Facebook calls "permissions"
 
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 facebook_session = False
@@ -76,3 +79,5 @@ def save_token(token_dict):
 
 
 # TODO use make_facebook_request
+response = make_facebook_request('https://graph.facebook.com/v2.10/me/friendlists')
+print(response.text)
